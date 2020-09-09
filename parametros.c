@@ -3,35 +3,46 @@
 //
 #include <stdio.h>
 
-void caixaBanco(int x);
+struct Tupla {
+    int a, b;
+};
+
+void divisor(int x, struct Tupla *notas, int tam);
+int repetidos(int numeros[], int tam);
 
 int main() {
-    int t = 373;
-    caixaBanco(t);
+    struct Tupla notas[] = {{100, 0},
+                            {50,  0},
+                            {10,  0},
+                            {5,   0},
+                            {1,   0}};
+
+    struct Tupla tempo[] = {{3600, 0},
+                            {60,   0},
+                            {1,    0}};
+
+    divisor(373, notas, 5);
+    divisor(3765, tempo, 3);
+
+    printf("373 em notas\n");
+    for (int i = 0; i < 5; ++i) {
+        printf("%d\t= %d\n", notas[i].a, notas[i].b);
+    }
+    printf("\n3765s em HH:MI:SS\n");
+    for (int i = 0; i < 3; ++i) {
+        printf("%d\t= %d\n", tempo[i].a, tempo[i].b);
+    }
 }
 
-void caixaBanco(int x) {
+void divisor(int x, struct Tupla *notas, int tam) {
     if (x <= 0) { printf("Favor inserir valores maiores que 0.\n"); }
 
-    int nota100 = x / 100;
-    x = x % 100;
-
-    int nota50 = x / 50;
-    x = x % 50;
-
-    int nota10 = x / 10;
-    x = x % 10;
-
-    int nota5 = x / 5;
-    x = x % 5;
-
-    int nota1 = x / 1;
-
-    printf("Notas\tQtd\n");
-    printf("100\t%d\n", nota100);
-    printf("50\t%d\n", nota50);
-    printf("10\t%d\n", nota10);
-    printf("5\t%d\n", nota5);
-    printf("1\t%d\n", nota1);
+    for (int i = 0; i < tam; ++i) {
+        notas[i].b = x / notas[i].a;
+        x = x % notas[i].a;
+    }
 }
 
+int repetidos(int numeros[], int tam){
+    
+}
