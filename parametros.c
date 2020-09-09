@@ -34,3 +34,4 @@ void caixaBanco(int x) {
     printf("5\t%d\n", nota5);
     printf("1\t%d\n", nota1);
 }
+
