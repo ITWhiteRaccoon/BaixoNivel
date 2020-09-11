@@ -3,14 +3,31 @@
 //
 #include <stdio.h>
 #include "Parametros.h"
-
-void testeParametros();
+#include "Ponteiros.h"
 
 void testePonteiros();
 
+void testeParametros();
+
+void printArray(int arr[], int arrSize);
+
 int main() {
     testeParametros();
+    testePonteiros();
+}
 
+void testePonteiros() {
+    int n[] = {1, 2, 3, 6, 6, 8, 2, 3};
+    int arrSize = 8;
+    printArray(n,arrSize);
+    printf("\nindexOf(6) = %d\n", indexOf(6, n, 8));
+
+    int k[8];
+    copy(n, k, 8);
+    printArray(k,arrSize);
+
+    invert(k, 8);
+    printArray(k,arrSize);
 }
 
 void testeParametros() {
@@ -27,7 +44,7 @@ void testeParametros() {
     divisor(373, notas, 5);
     divisor(3765, tempo, 3);
 
-    printf("373 em notas\n");
+    printf("\n373 em notas\n");
     for (int i = 0; i < 5; ++i) {
         printf("%d\t= %d\n", notas[i].a, notas[i].b);
     }
@@ -37,6 +54,10 @@ void testeParametros() {
     }
 }
 
-void testePonteiros() {
-
+void printArray(int arr[], int arrSize) {
+    printf("{ ");
+    for (int i = 0; i < arrSize; ++i) {
+        printf("%d ", arr[i]);
+    }
+    printf("}\n");
 }
